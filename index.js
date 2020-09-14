@@ -28,9 +28,12 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ *  Counter 1 has a nested function within it. Counter2 is just incrimenting count. 
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ * Counter 1 is the closure because it is accessing the count value which is in the outer scope of the function counter.
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 
+ * 
  *
 */
 
@@ -38,9 +41,15 @@ function processFirstItem(stringList, callback) {
 function counterMaker() {
   let count = 0;
   return function counter() {
+    
     count++;
   }
 }
+
+
+
+
+
 
 const counter1 = counterMaker();
 
@@ -56,12 +65,13 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(){
 
-    /*Code Here*/
+  let getPoints = Math.floor(Math.random() * Math.floor(3));
+  return getPoints
 
 }
-
+console.log(inning())
 /* Task 3: finalScore()
 
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
