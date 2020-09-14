@@ -32,6 +32,7 @@ function processFirstItem(stringList, callback) {
  * 2. Which of the two uses a closure? How can you tell?
  * Counter 1 is the closure because it is accessing the count value which is in the outer scope of the function counter.
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * I guess counter 2 would be more benefical if we were keeping track of count somewhere else in the program. 
  * 
  * 
  *
@@ -45,11 +46,6 @@ function counterMaker() {
     count++;
   }
 }
-
-
-
-
-
 
 const counter1 = counterMaker();
 
@@ -66,12 +62,15 @@ function counter2() {
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
 function inning(){
-
-  let getPoints = Math.floor(Math.random() * Math.floor(3));
-  return getPoints
-
+  
+  return Math.floor(Math.random() * 3)
+  
 }
-console.log(inning())
+
+console.log("Points this inning:", inning())
+
+
+//console.log("inning is ", inning())
 /* Task 3: finalScore()
 
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
@@ -86,12 +85,25 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(numOfInnings,inning){
+  let homeTeam = 0
+  let awayTeam = 0
+  
+  
+  for(let i = 0; i < numOfInnings; i++) { 
+    homeTeam = homeTeam + inning()
+    awayTeam = awayTeam + inning()
+  }
 
-  /*Code Here*/
+  let endScore = { 
+    home: homeTeam, 
+    away: awayTeam
+  }
+
+  return endScore
 
 }
-
+console.log(finalScore(9,inning))
 /* Task 4: 
 
 Create a function called `scoreboard` that accepts the following parameters: 
@@ -114,8 +126,27 @@ and returns the score at each pont in the game, like so:
 
 Final Score: awayTeam - homeTeam */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function getInningScore() { 
+
 }
 
+function scoreboard(numOfInnings,inning,getInningScore) {
+  // need to display score of every inning 
+  // need to output the total score of the game. 
+  let homeTeam = 0
+  let awayTeam = 0
+  
+  
+  
+  for(let i = 1; i < numOfInnings + 1; i++) { 
+    getInningScore =`Inning: ${i}: Away Team: ${awayTeam} - Home Team:${homeTeam}`
+    homeTeam = homeTeam + inning()
+    awayTeam = awayTeam + inning()
+    console.log(getInningScore)
+  }
 
+    return `The final score is...  Away Team: ${awayTeam} - Home Team: ${homeTeam}`
+
+
+}
+console.log(scoreboard(9,inning, getInningScore))

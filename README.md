@@ -42,6 +42,11 @@ Find the file `index.js` and complete the tasks until your tests are passing.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+ A function. 
+
+ The way that closures work is that they allow us access to an outer function's scope from an inner function. This allows for reusablity. 
+
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +68,15 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+The line that we call the return function. Since our return function is inside of personalDice we now have access to personalDice's scope and the name variable. 
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+The text is always the same while the number can change. 
+
 c. What is the lexical scope of `newRoll`? 
+The return function. 
+
 
 ### Task 3 - Stretch Goals
 
