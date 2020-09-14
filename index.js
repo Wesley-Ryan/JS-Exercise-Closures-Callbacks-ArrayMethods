@@ -131,8 +131,7 @@ function getInningScore() {
 }
 
 function scoreboard(numOfInnings,inning,getInningScore) {
-  // need to display score of every inning 
-  // need to output the total score of the game. 
+ 
   let homeTeam = 0
   let awayTeam = 0
   
